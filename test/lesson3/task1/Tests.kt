@@ -177,6 +177,7 @@ class Tests {
         assertTrue(isPalindrome(24688642))
         assertFalse(isPalindrome(Int.MAX_VALUE))
         assertTrue(isPalindrome(2147447412))
+        assertFalse(isPalindrome(235857532))
     }
 
     @Test
@@ -188,6 +189,7 @@ class Tests {
         assertFalse(hasDifferentDigits(0))
         assertFalse(hasDifferentDigits(777))
         assertTrue(hasDifferentDigits(31122))
+        assertFalse(hasDifferentDigits(88))
     }
 
     @Test
@@ -199,6 +201,7 @@ class Tests {
         assertEquals(-1.0, sin(3.0 * PI / 2.0, 1e-5), 1e-5)
         assertEquals(0.0, sin(100 * PI, 1e-5), 1e-5)
         assertNotEquals(kotlin.math.sin(1.0), sin(1.0, 1.0))
+        assertEquals(-1.0, sin(7 * (PI / 2), 1e-5), 1e-5)
         assertNotEquals(kotlin.math.sin(-0.5), sin(-0.5, 1.0))
     }
 
@@ -212,6 +215,7 @@ class Tests {
         assertEquals(1.0, cos(100 * PI, 1e-5), 1e-5)
         assertNotEquals(kotlin.math.cos(1.0), cos(1.0, 1.0))
         assertNotEquals(kotlin.math.cos(0.5), cos(-0.5, 1.0))
+        assertEquals(-1.0, cos(5 * PI, 1e-5), 1e-5)
     }
 
     @Test
@@ -230,6 +234,7 @@ class Tests {
     fun fibSequenceDigit() {
         assertEquals(1, fibSequenceDigit(1))
         assertEquals(1, fibSequenceDigit(2))
+        assertEquals(2, fibSequenceDigit(3))
         assertEquals(3, fibSequenceDigit(4))
         assertEquals(2, fibSequenceDigit(9))
         assertEquals(5, fibSequenceDigit(14))
