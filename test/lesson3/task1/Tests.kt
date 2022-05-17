@@ -70,6 +70,7 @@ class Tests {
         assertEquals(2, digitNumber(10))
         assertEquals(2, digitNumber(99))
         assertEquals(3, digitNumber(123))
+        assertEquals(2, digitNumber(-14))
         assertEquals(10, digitNumber(Int.MAX_VALUE))
     }
 
@@ -155,6 +156,7 @@ class Tests {
         assertFalse(isCoPrime(37, 111))
         assertTrue(isCoPrime(1234567890, 908765431))
         assertTrue(isCoPrime(2109876543, 1234567891))
+        assertFalse(isCoPrime(59702, 100000))
     }
 
     @Test
@@ -227,6 +229,8 @@ class Tests {
         assertEquals(6, squareSequenceDigit(12))
         assertEquals(0, squareSequenceDigit(17))
         assertEquals(9, squareSequenceDigit(27))
+        assertEquals(8, squareSequenceDigit(351))
+        assertEquals(8, squareSequenceDigit(717))
     }
 
     @Test
@@ -239,5 +243,6 @@ class Tests {
         assertEquals(2, fibSequenceDigit(9))
         assertEquals(5, fibSequenceDigit(14))
         assertEquals(2, fibSequenceDigit(20))
+        assertEquals(7, fibSequenceDigit(45))
     }
 }

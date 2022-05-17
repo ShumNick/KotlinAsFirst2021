@@ -2,10 +2,8 @@
 
 package lesson3.task1
 
-import kotlin.math.PI
-import kotlin.math.abs
-import kotlin.math.pow
-import kotlin.math.sqrt
+import java.lang.Integer.max
+import kotlin.math.*
 
 // Урок 3: циклы
 // Максимальное количество баллов = 9
@@ -81,7 +79,7 @@ fun digitNumber(n: Int): Int {
     do {
         count++
         number /= 10
-    } while (number > 0)
+    } while (abs(number) > 0)
 
     return count
 
@@ -184,7 +182,19 @@ fun lcm(m: Int, n: Int): Int {
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean = lcm(m, n) == m * n
+fun isCoPrime(m: Int, n: Int): Boolean {
+    var dividend = max(m, n)
+    var divider = min(m, n)
+
+    while (divider != 0) {
+        val tmpDivider = divider
+        divider = dividend % divider
+        dividend = tmpDivider
+        if (divider == 1)
+            return true
+    }
+    return false
+}
 
 
 /**
@@ -283,11 +293,11 @@ fun sin(x: Double, eps: Double): Double {
 
     while (true) {
         val first = angle.pow(i) / factorial(i)
-        if (abs(first) < eps) return res
         res += first
+        if (abs(first) < eps) return res
         val second = angle.pow((i + 2)) / factorial(i + 2)
-        if (abs(second) < eps) return res
         res -= second
+        if (abs(second) < eps) return res
         i += 4
     }
 }
@@ -313,9 +323,13 @@ fun cos(x: Double, eps: Double): Double {
         val first = angle.pow(i) / factorial(i)
         if (abs(first) < eps) return res
         res += first
+
+
         val second = angle.pow((i + 2)) / factorial(i + 2)
         if (abs(second) < eps) return res
         res -= second
+
+
         i += 4
     }
 }
@@ -347,8 +361,8 @@ fun squareSequenceDigit(n: Int): Int {
         for (i in 1..subCount) {
 
             if (tmpSubCount > 1) {
-                val number = subSquare / 10.0.pow(subCount - 1).toInt()
-                subSquare %= 10.0.pow(subCount - 1).toInt()
+                val number = subSquare / 10.0.pow(tmpSubCount - 1).toInt()
+                subSquare %= 10.0.pow(tmpSubCount - 1).toInt()
                 count++
                 if (count == n) return number
                 tmpSubCount--
@@ -393,8 +407,8 @@ fun fibSequenceDigit(n: Int): Int {
         for (i in 1..subCount) {
 
             if (tmpSubCount > 1) {
-                val number = subFib / 10.0.pow(subCount - 1).toInt()
-                subFib %= 10.0.pow(subCount - 1).toInt()
+                val number = subFib / 10.0.pow(tmpSubCount - 1).toInt()
+                subFib %= 10.0.pow(tmpSubCount - 1).toInt()
                 count++
                 if (count == n) return number
                 tmpSubCount--
