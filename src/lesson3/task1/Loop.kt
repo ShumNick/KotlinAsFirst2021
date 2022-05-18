@@ -2,7 +2,7 @@
 
 package lesson3.task1
 
-import java.lang.Integer.max
+
 import kotlin.math.*
 
 // Урок 3: циклы
@@ -182,21 +182,7 @@ fun lcm(m: Int, n: Int): Int {
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean {
-    if (m == n) return true
-    var dividend = max(m, n)
-    var divider = min(m, n)
-    if (divider == 1) return true
-
-    while (divider != 0) {
-        val tmpDivider = divider
-        divider = dividend % divider
-        dividend = tmpDivider
-        if (divider == 1)
-            return true
-    }
-    return false
-}
+fun isCoPrime(m: Int, n: Int): Boolean = TODO()
 
 
 /**
@@ -298,7 +284,7 @@ fun sin(x: Double, eps: Double): Double = TODO()
  */
 fun cos(x: Double, eps: Double): Double = TODO()
 
-    /**
+/**
  * Сложная (4 балла)
  *
  * Найти n-ю цифру последовательности из квадратов целых чисел:
