@@ -183,6 +183,7 @@ fun lcm(m: Int, n: Int): Int {
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
 fun isCoPrime(m: Int, n: Int): Boolean {
+    if (m == n) return true
     var dividend = max(m, n)
     var divider = min(m, n)
 
@@ -283,24 +284,7 @@ fun hasDifferentDigits(n: Int): Boolean {
  * Подумайте, как добиться более быстрой сходимости ряда при больших значениях x.
  * Использовать kotlin.math.sin и другие стандартные реализации функции синуса в этой задаче запрещается.
  */
-fun sin(x: Double, eps: Double): Double {
-    var i = 1
-    var res = 0.0
-    var angle = x
-    if (x > 2 * PI) {
-        angle = x % (2 * PI)
-    }
-
-    while (true) {
-        val first = angle.pow(i) / factorial(i)
-        res += first
-        if (abs(first) < eps) return res
-        val second = angle.pow((i + 2)) / factorial(i + 2)
-        res -= second
-        if (abs(second) < eps) return res
-        i += 4
-    }
-}
+fun sin(x: Double, eps: Double): Double = TODO()
 
 /**
  * Средняя (4 балла)
@@ -311,30 +295,9 @@ fun sin(x: Double, eps: Double): Double {
  * Подумайте, как добиться более быстрой сходимости ряда при больших значениях x.
  * Использовать kotlin.math.cos и другие стандартные реализации функции косинуса в этой задаче запрещается.
  */
-fun cos(x: Double, eps: Double): Double {
-    var i = 0
-    var res = 0.0
-    var angle = x
-    if (x > 2 * PI) {
-        angle = x % (2 * PI)
-    }
+fun cos(x: Double, eps: Double): Double = TODO()
 
-    while (true) {
-        val first = angle.pow(i) / factorial(i)
-        if (abs(first) < eps) return res
-        res += first
-
-
-        val second = angle.pow((i + 2)) / factorial(i + 2)
-        if (abs(second) < eps) return res
-        res -= second
-
-
-        i += 4
-    }
-}
-
-/**
+    /**
  * Сложная (4 балла)
  *
  * Найти n-ю цифру последовательности из квадратов целых чисел:
