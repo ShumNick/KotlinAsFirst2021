@@ -186,6 +186,7 @@ fun isCoPrime(m: Int, n: Int): Boolean {
     if (m == n) return true
     var dividend = max(m, n)
     var divider = min(m, n)
+    if (divider == 1) return true
 
     while (divider != 0) {
         val tmpDivider = divider
