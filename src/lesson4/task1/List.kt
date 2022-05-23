@@ -420,17 +420,22 @@ fun russian(n: Int): String {
     if (n >= 1000) {
         val num = n / 1000
         result += russian(num)
-        when (num % 10) {
-            0, in 5..9 -> result += " тысяч "
-            1 -> {
-                result += " тысяча "
-                result = result.replace("один ", "одна ", true)
+
+        if (num % 100 in 11..19) {
+            result += " тысяч "
+        } else
+            when (num % 10) {
+                0, in 5..9 -> result += " тысяч "
+                1 -> {
+                    result += " тысяча "
+                    result = result.replace("один ", "одна ", true)
+                }
+                in 2..4 -> {
+                    result += " тысячи "
+                    result = result.replace("два ", "две ", true)
+                }
             }
-            in 2..4 -> {
-                result += " тысячи "
-                result = result.replace("два ", "две ", true)
-            }
-        }
+
         if (n % 1000 == 0) result = result.trimEnd()
         return result + russian(n % 1000)
     }
