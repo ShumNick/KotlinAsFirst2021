@@ -277,7 +277,7 @@ fun convert(n: Int, base: Int): List<Int> {
     val list = mutableListOf<Int>()
     val result = mutableListOf<Int>()
 
-    while (numb > base) {
+    while (numb >= base) {
         list.add(numb % base)
         numb /= base
     }
@@ -310,7 +310,7 @@ fun convertToString(n: Int, base: Int): String {
         else
             str += numb % base
         numb /= base
-    } while (numb > base)
+    } while (numb >= base)
 
     if (numb > 0) {
         if (numb >= 10)
@@ -437,7 +437,7 @@ fun russian(n: Int): String {
 
     when (ind) {
         3 -> result += hundred[n / 100 - 1] + " " + russian(n - (n / 100) * 100) + " "
-        2 -> result += if (n / 10 == 1) elev[n % 10 - 1] else dec[n / 10 - 1] + " " + russian(n - (n / 10) * 10)
+        2 -> result += if (n / 10 == 1 && n % 10 != 0) elev[n % 10 - 1] else dec[n / 10 - 1] + " " + russian(n - (n / 10) * 10)
         1 -> result += one[n - 1]
     }
     return result.trimEnd()
