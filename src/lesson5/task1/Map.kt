@@ -102,7 +102,7 @@ fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> {
     val name = mutableListOf<String>()
     val result = mutableMapOf<Int, List<String>>()
 
-    for (i in 5 downTo 2) {
+    for (i in 5 downTo 0) {
         if (grades.containsValue(i)) {
             for ((key, value) in grades) {
                 if (i == value)
@@ -257,6 +257,7 @@ fun averageStockPrice(stockPrices: List<Pair<String, Double>>): Map<String, Doub
 fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): String? {
     var result = ""
     var minCost = 0.0
+    if (kind == "") return null
     for ((key, value) in stuff) {
         if (!value.first.contains(kind)) return null
         else {
@@ -282,7 +283,7 @@ fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): S
  *   canBuildFrom(listOf('a', 'b', 'o'), "baobab") -> true
  */
 fun canBuildFrom(chars: List<Char>, word: String): Boolean {
-    if (chars.isEmpty()) return false
+
     val wordLowerCase = word.lowercase()
     val setChar = mutableSetOf<Char>()
 
