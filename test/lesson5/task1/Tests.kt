@@ -227,6 +227,12 @@ class Tests {
                 "печенье"
             )
         )
+        assertNull(
+            findCheapestStuff(
+                mapOf("" to ("a" to 0.0)),
+                ""
+            )
+        )
     }
 
     @Test
