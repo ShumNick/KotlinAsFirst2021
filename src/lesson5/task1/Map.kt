@@ -98,24 +98,8 @@ fun buildWordSet(text: List<String>): MutableSet<String> {
  *   buildGrades(mapOf("Марат" to 3, "Семён" to 5, "Михаил" to 5))
  *     -> mapOf(5 to listOf("Семён", "Михаил"), 3 to listOf("Марат"))
  */
-fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> {
-    val name = mutableListOf<String>()
-    val result = mutableMapOf<Int, List<String>>()
+fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> = TODO()
 
-    for (i in 5 downTo 0) {
-        if (grades.containsValue(i)) {
-            for ((key, value) in grades) {
-                if (i == value)
-                    name.add(key)
-            }
-            result[i] = name.toList()
-            name.clear()
-        }
-
-    }
-
-    return result
-}
 
 /**
  * Простая (2 балла)
@@ -257,7 +241,7 @@ fun averageStockPrice(stockPrices: List<Pair<String, Double>>): Map<String, Doub
 fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): String? {
     var result = ""
     var minCost = 0.0
-    if (kind == "") return null
+
     for ((key, value) in stuff) {
         if (!value.first.contains(kind)) return null
         else {
@@ -281,17 +265,18 @@ fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): S
  *
  * Например:
  *   canBuildFrom(listOf('a', 'b', 'o'), "baobab") -> true
- */
+` */
 fun canBuildFrom(chars: List<Char>, word: String): Boolean {
 
     val wordLowerCase = word.lowercase()
     val setChar = mutableSetOf<Char>()
+    val charLowerCase = chars.map { it.lowercaseChar() }
 
     for (i in wordLowerCase.indices) {
         setChar.add(wordLowerCase[i])
     }
 
-    setChar -= chars.toSet()
+    setChar -= charLowerCase.toSet()
 
     return setChar.isEmpty()
 }
