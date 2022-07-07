@@ -250,9 +250,10 @@ fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): S
                 result = key
             }
 
-            if (minCost > value.second)
+            if (minCost > value.second) {
                 result = key
-
+                minCost = value.second
+            }
             contains = true
         }
     }
