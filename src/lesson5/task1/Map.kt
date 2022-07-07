@@ -245,14 +245,15 @@ fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): S
 
     for ((key, value) in stuff) {
         if (value.first == kind) {
-            contains = true
-            if (minCost == 0.0) {
+            if (minCost == 0.0 && !contains) {
                 minCost = value.second
                 result = key
             }
 
             if (minCost > value.second)
                 result = key
+
+            contains = true
         }
     }
 
