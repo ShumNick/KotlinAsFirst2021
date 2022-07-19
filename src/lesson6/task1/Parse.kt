@@ -172,6 +172,8 @@ fun flattenPhoneNumber(phone: String): String {
     val code: String
     var digit = ""
 
+    if (!phone.any { it.isDigit() }) return ""
+
     if ('+' in phone)
         prefix = "+"
 
@@ -297,7 +299,7 @@ fun firstDuplicateIndex(str: String): Int {
 
     if (string.size == 1) return -1
 
-    for (i in 0..string.size) {
+    for (i in 0 until string.size - 1) {
         if (string[i].compareTo(string[i + 1], ignoreCase = true) == 0)
             return str.indexOf(string[i].first(), index)
         index += string[i].length + 1
@@ -323,6 +325,7 @@ fun mostExpensive(description: String): String {
 
     for (i in str) {
         val tmpItem = i.split(" ")
+        if (tmpItem[1].toDouble() <= 0.0) throw IllegalArgumentException("Any good with price 0.0")
         if (tmpItem.size == 1) return tmpItem[0]
         if (tmpItem[1].toDouble() > price) {
             price = tmpItem[1].toDouble()
