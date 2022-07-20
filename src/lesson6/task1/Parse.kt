@@ -178,6 +178,7 @@ fun flattenPhoneNumber(phone: String): String {
         prefix = "+"
 
     if ('(' in phone) {
+        if (')' !in phone) return ""
         code = phone.substring(phone.indexOf('(') + 1, phone.indexOf(')'))
         if (code == "") return ""
 
